@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04_const특성과 immutable array</title>
+  </head>
+  <body></body>
+  <script>
+    function home() {
+      const list = ["apple", "orange", "watermelon"];
+      //list = "adsdf"; //재할당 불가능
+      list.push("banana"); //수정은 가능함
+    }
+    //home();
+
+    //immutable array를 어떻게 만들지?
+    //뒤로가기, 앞으로가기
+    const list = ["apple", "orange", "watermelon"];
+    list2 = [].concat(list, "banana");
+    console.log(list, list2);
+  </script>
+</html>
+<!-- 
+    const를 사용하더라도 배열과 오브젝트의 값을 변경하는 것은 가능하다.
+    재할당은 불가능하다.
+ -->

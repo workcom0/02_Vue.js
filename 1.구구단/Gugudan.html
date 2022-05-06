@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>구구단</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <div>{{first}}곱하기{{second}} 는?</div>
+      <form v-on:submit="onSubmitForm">
+        <!-- v-model : 여기의 데이터를 뷰의 데이터에서도 쓰고싶다! -->
+        <!-- ref : view가 부르는 이름이 answer임 / ref남용하면 안좋음 / 값 직접 넣어줄 용도로 사용하면 안됨 -->
+        <input type="number" v-model="value" ref="answer" />
+        <button type="submit">입력</button>
+        <!-- <div>{{value}}</div> -->
+      </form>
+      <div id="result">{{result}}</div>
+    </div>
+  </body>
+  <script>
+    const app = new Vue({
+      el: "#root",
+      data: {
+        //바뀌는 부분들을 데이터로 만들어 줌.
+        first: Math.ceil(Math.random() * 9),
+        second: Math.ceil(Math.random() * 9),
+        value: "",
+        result: "",
+      },
+      methods: {
+        onSubmitForm(e) {
+          //폼이 제출될때마다 새로고침되는걸 막아줌
+          e.preventDefault();
+          if (this.first * this.second === parseInt(this.value)) {
+            //정답인 경우에 화면을 바꿀필요가 전혀 없음 무조건 데이터만 바꾸기!
+            this.result = "정답";
+            this.first = Math.ceil(Math.random() * 9);
+            this.second = Math.ceil(Math.random() * 9);
+            this.value = "";
+          } else {
+            this.result = "땡";
+            this.value = "";
+          }
+          this.$refs.answer.focus();
+        },
+      },
+    });
+  </script>
+</html>

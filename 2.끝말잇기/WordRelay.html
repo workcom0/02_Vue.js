@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <word-relay start-word="수경"></word-relay>
+      <word-relay start-word="천재"></word-relay>
+      <word-relay start-word="짱"></word-relay>
+    </div>
+  </body>
+  <script>
+    // 뷰 컴포넌트에서는 데이터를 함수형태로 나타내야함
+    // 형제태그들은 무조건 큰 태그 하나로 묶어줘야 함
+    Vue.component("word-relay", {
+      template: `
+      <div>
+        <div>{{word}}</div>
+        <form>
+            <input type="text" v-model="value" ref="cursor" />
+            <button type="button" @click="onSubmitForm">입력!</button>
+        </form>
+        <div>{{result}}</div>
+      </div>
+      `,
+      props: ["startWord"],
+      data() {
+        return {
+          word: this.startWord,
+          result: "",
+          value: "",
+        };
+      },
+      methods: {
+        onSubmitForm(e) {
+          e.preventDefault();
+          if (this.word[this.word.length - 1] === this.value[0]) {
+            this.result = "딩동댕";
+            this.word = this.value;
+            this.value = "";
+          } else {
+            this.result = "땡";
+            this.value = "";
+          }
+          this.$refs.cursor.focus();
+        },
+      },
+    });
+  </script>
+  <script>
+    //뷰인스턴스
+    const app = new Vue({
+      el: "#root",
+    });
+  </script>
+</html>

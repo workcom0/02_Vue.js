@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01_for of 순회하기</title>
+  </head>
+  <body></body>
+  <script>
+    var data = [1, 2, undefined, NaN, null, ""];
+
+    //1번째 방법
+    data.forEach(function (value) {
+      console.log("value is", value);
+    });
+
+    //2번째 방법 (잘 사용 안함)
+    for (let idx in data) {
+      console.log(data[idx]);
+    }
+
+    //3번째 방법 (forEach나 for of 사용하기)
+    for (let value of data) {
+      console.log(value);
+    }
+
+    var str = "hello world!!!";
+    for (let value of str) {
+      console.log(value);
+    }
+  </script>
+</html>

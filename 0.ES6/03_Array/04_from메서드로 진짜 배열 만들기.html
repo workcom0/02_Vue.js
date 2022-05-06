@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04_from메서드로 진짜 배열 만들기</title>
+  </head>
+  <body></body>
+  <script>
+    function addMark() {
+      //인자 개수를 모를때 argumets를 사용함. 하지만 권장하지는 않음
+      /*
+      let newData = [];
+      for (let i = 0; i < arguments.length; i++) {
+        newData.push(arguments[i] + "!");
+      }
+      */
+
+      //arguments는 배열같이 보이지만 배열이 아님. 그래서 from을 통해 진짜 배열로 만들어줌.
+      let newArray = Array.from(arguments);
+      let newData = newArray.map(function (value) {
+        return value + "!";
+      });
+
+      console.log(newData);
+    }
+
+    addMark(1, 2, 3, 4, 5);
+  </script>
+</html>

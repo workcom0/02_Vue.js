@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01_실습예제1</title>
+  </head>
+  <body>
+    <ul>
+      <li>apple</li>
+      <li>orange</li>
+      <li>banana</li>
+      <li>strawberry</li>
+    </ul>
+  </body>
+  <script>
+    function print() {
+      /*
+        filter, includes, from을 사용해서 문자열 'e'가 포함된 
+        노드로 구성된 배열을 만들어서 반환하기!!
+
+        **노드리스트란?
+        querySelectorAll로 html element를 선택한 것
+      */
+
+      const list = document.querySelectorAll("li");
+      console.log(toString.call(list)); //list는 nodeList타입
+
+      const listArray = Array.from(list); //li노드로 구성된 배열
+      console.log(toString.call(listArray)); //listArray는 Array타입
+
+      //array만 filter사용 할 수 있다.
+      let eArray = listArray.filter(function (value) {
+        return value.innerText.includes("e");
+      });
+      console.log(eArray);
+    }
+    print();
+  </script>
+</html>

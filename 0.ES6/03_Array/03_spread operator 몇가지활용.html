@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03_spread operator 몇가지활용</title>
+  </head>
+  <body></body>
+  <script>
+    let pre = [100, 200, "hello", null];
+    let newData = [0, 1, 2, , ...pre, 3, 4];
+    console.log(newData);
+
+    function sum(a, b, c) {
+      return a + b + c;
+    }
+    let tmp = [100, 200, 300];
+    console.log(sum.apply(null, tmp));
+    console.log(sum(...tmp));
+  </script>
+</html>
